@@ -35,11 +35,8 @@ if [ ! -f "/usr/share/waydroid-extra/images/vendor.img" ] ; then
   rm vendor.zip
 fi
 
-if [ ! -e "/home/waydroid/" ] ; then
-  rm -rf /var/lib/waydroid /home/waydroid ~/waydroid ~/.share/waydroid ~/.local/share/applications/*aydroid* ~/.local/share/waydroid
-fi
-
 echo "running waydroid init"
+rm -rf /var/lib/waydroid /home/waydroid ~/waydroid ~/.share/waydroid ~/.local/share/applications/*aydroid* ~/.local/share/waydroid
 waydroid init -f
 
 echo "copying misc files"
