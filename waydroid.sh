@@ -2,15 +2,17 @@
 SYSTEM_DOWNLOAD_URL=https://netix.dl.sourceforge.net/project/waydroid/images/system/lineage/waydroid_arm64/lineage-17.1-20220723-VANILLA-waydroid_arm64-system.zip
 IMG_DIR=/usr/share/waydroid-extra/images/
 
-echo "Adding chum repo"
-ssu ar sailfishos-chum https://repo.sailfishos.org/obs/sailfishos:/chum/4.4.0.72_aarch64/
-ssu er sailfishos-chum
+if [ ! -f /usr/bin/waydroid ] ; then
+  echo "Adding chum repo"
+  ssu ar sailfishos-chum https://repo.sailfishos.org/obs/sailfishos:/chum/4.4.0.72_aarch64/
+  ssu er sailfishos-chum
+  echo "Installing Waydroid"
+  pkcon refresh
+  pkcon install -y waydroid waydroid-runner
+fi
 
-echo "Installing Waydroid"
-pkcon refresh
-pkcon install -y waydroid waydroid-runner
-
-if [ ! -f "${IMG_DIR}" ] ; then
+if [ ! -e "${IMG_DIR}" ] ; then
+  echo "${IMG_DIR}"
   mkdir -p "${IMG_DIR}"
 fi
 
@@ -31,6 +33,10 @@ if [ ! -f "/usr/share/waydroid-extra/images/vendor.img" ] ; then
   echo "Extracting vendor.zip"
   unzip vendor.zip -d "${IMG_DIR}"
   rm vendor.zip
+fi
+
+if [ ! -e "/home/waydroid/" ] ; then
+  rm -rf /var/lib/waydroid /home/waydroid ~/waydroid ~/.share/waydroid ~/.local/share/applications/*aydroid* ~/.local/share/waydroid
 fi
 
 echo "running waydroid init"
