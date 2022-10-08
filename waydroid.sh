@@ -1,6 +1,5 @@
 #!/bin/bash
 SYSTEM_DOWNLOAD_URL=https://netix.dl.sourceforge.net/project/waydroid/images/system/lineage/waydroid_arm64/lineage-17.1-20220723-VANILLA-waydroid_arm64-system.zip
-VENDOR_DOWNLOAD_URL=
 IMG_DIR=/usr/share/waydroid-extra/images/
 
 echo "Adding chum repo"
@@ -13,7 +12,6 @@ pkcon install -y waydroid waydroid-runner
 
 echo "Downloading Waydroid Images"
 curl "${SYSTEM_DOWNLOAD_URL}" -O system.zip
-curl "${VENDOR_DOWNLOAD_URL}" -O vendor.zip
 
 echo "Extracting Images"
 mkdir -p "${IMG_DIR}"
