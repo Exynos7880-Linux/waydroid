@@ -36,7 +36,7 @@ if [ ! -f "/usr/share/waydroid-extra/images/vendor.img" ] ; then
 fi
 
 echo "running waydroid init"
-rm -rf /var/lib/waydroid /home/waydroid ~/waydroid ~/.share/waydroid ~/.local/share/applications/*aydroid* ~/.local/share/waydroid
+rm -rf /var/lib/waydroid /home/waydroid ~/waydroid /home/defaultuser/.share/waydroid /home/defaultuser/.local/share/applications/*aydroid* /home/defaultuser/.local/share/waydroid
 waydroid init -f
 
 echo "copying misc files"
