@@ -13,6 +13,12 @@ pkcon install -y waydroid waydroid-runner
 echo "Downloading Waydroid Images"
 curl "${SYSTEM_DOWNLOAD_URL}" -O system.zip
 
+# check if unzip installed or not
+if [ ! -f "/usr/bin/unzip" ] ; then
+  echo unzip missing, installing.
+  pkcon install unzip -y
+fi
+
 echo "Extracting Images"
 mkdir -p "${IMG_DIR}"
 unzip system.zip -d "${IMG_DIR}"
