@@ -10,8 +10,9 @@ echo "Installing Waydroid"
 pkcon refresh
 pkcon install -y waydroid waydroid-runner
 
-echo "Downloading Waydroid Images"
-curl "${SYSTEM_DOWNLOAD_URL}" -o system.zip
+if [ ! -f "${IMG_DIR}" ] ; then
+  mkdir -p "${IMG_DIR}"
+fi
 
 # check if unzip installed or not
 if [ ! -f "/usr/bin/unzip" ] ; then
@@ -19,11 +20,18 @@ if [ ! -f "/usr/bin/unzip" ] ; then
   pkcon install unzip -y
 fi
 
-echo "Extracting Images"
-mkdir -p "${IMG_DIR}"
-unzip system.zip -d "${IMG_DIR}"
-unzip vendor.zip -d "${IMG_DIR}"
-rm system.zip vendor.zip
+if [ ! -f "/usr/share/waydroid-extra/images/system.img" ] ; then
+  echo "Downloading Waydroid Images"
+  curl "${SYSTEM_DOWNLOAD_URL}" -o system.zip
+  unzip system.zip -d "${IMG_DIR}"
+  rm system.zip
+fi
+
+if [ ! -f "/usr/share/waydroid-extra/images/vendor.img" ] ; then
+  echo "Extracting vendor.zip"
+  unzip vendor.zip -d "${IMG_DIR}"
+  rm vendor.zip
+fi
 
 echo "running waydroid init"
 waydroid init -f
