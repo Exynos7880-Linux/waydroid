@@ -1,5 +1,6 @@
 #!/bin/bash
-SYSTEM_DOWNLOAD_URL=https://netix.dl.sourceforge.net/project/waydroid/images/system/lineage/waydroid_arm64/lineage-17.1-20220723-VANILLA-waydroid_arm64-system.zip
+ARCH="arm64"
+SYSTEM_DOWNLOAD_URL=`python3 getlatest.py system ${ARCH}`
 IMG_DIR=/usr/share/waydroid-extra/images/
 
 if [ ! -f /usr/bin/waydroid ] ; then
