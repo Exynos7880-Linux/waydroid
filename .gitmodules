@@ -1,0 +1,3 @@
+[submodule "waydroid_OTA"]
+	path = waydroid_OTA
+	url = https://github.com/waydroid/OTA.git
