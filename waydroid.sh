@@ -40,15 +40,10 @@ echo "running waydroid init"
 rm -rf /var/lib/waydroid /home/waydroid ~/waydroid /home/defaultuser/.share/waydroid /home/defaultuser/.local/share/applications/*aydroid* /home/defaultuser/.local/share/waydroid
 waydroid init -f
 
-if [ ! -e /home/waydroid ] ; then
-  echo "exiting"
+if [ ! -d /var/lib/waydroid/ ] ; then
+  echo "rebootig.."
+  reboot
+else
+  echo "exiting.."
   exit
 fi
-
-echo "copying misc files"
-cp -rf anbox-hybris.conf /etc/gbinder.d/anbox-hybris.conf
-cp -rf disabled_services.rc /usr/libexec/droid-hybris/system/etc/init/disabled_services.rc
-cp -f config_nodes /home/waydroid/lxc/waydroid/config_nodes
-
-echo "rebooting..."
-reboot
