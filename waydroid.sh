@@ -41,9 +41,9 @@ rm -rf /var/lib/waydroid /home/waydroid ~/waydroid /home/defaultuser/.share/wayd
 waydroid init -f
 
 if [ ! -d /var/lib/waydroid/ ] ; then
-  echo "rebootig.."
-  reboot
-else
   echo "exiting.."
   exit
+else
+  echo "rebootig.."
+  reboot
 fi
