@@ -36,22 +36,10 @@ if [ ! -f "/usr/bin/unzip" ] ; then
 fi
 
 if [ ! -f "/usr/share/waydroid-extra/images/system.img" ] ; then
-   if [[ $1 = "vanilla" ]]; then
-      echo "Downloading Waydroid ${FLAVOUR} Images"
-      curl "${SYSTEM_DOWNLOAD_URL}" -o system.zip
-      unzip system.zip -d "${IMG_DIR}"
-      
-   elif [[ $1 = "gapps" ]]; then
-      echo "Downloading Waydroid ${FLAVOUR} Images"
-      curl "${SYSTEM_DOWNLOAD_URL}" -o system.zip
-      unzip system.zip -d "${IMG_DIR}"
-      
-   elif [[ $1 = "foss" ]]; then
-      echo "Downloading Waydroid ${FLAVOUR} Images"
-      curl "${SYSTEM_DOWNLOAD_URL}" -o system.zip
-      unzip system.zip -d "${IMG_DIR}"
-   fi
-   rm system.zip
+  echo "Downloading Waydroid ${FLAVOUR} Images"
+  curl "${SYSTEM_DOWNLOAD_URL}" -o system.zip
+  unzip system.zip -d "${IMG_DIR}"
+  rm system.zip
 fi
 
 if [ ! -f "/usr/share/waydroid-extra/images/vendor.img" ] ; then
