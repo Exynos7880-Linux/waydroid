@@ -4,5 +4,4 @@
 
 ```
 ./waydroid.sh vanilla|gapps|foss
-
 ```
