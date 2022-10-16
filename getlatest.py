@@ -4,17 +4,32 @@ import sys
 
 img = sys.argv[1]
 arch = sys.argv[2]
+flavour = sys.argv[3]
 
 if (img == "system"):
+    if ( flavour == "VANILLA"):
+        with open('waydroid_OTA/system/lineage/waydroid_%s/VANILLA.json' % arch) as json_file:
+            data = json.load(json_file)
+            for p in data['response']:
+                last=p
+                break
+            print(last["url"])
 
-    with open('waydroid_OTA/system/lineage/waydroid_%s/VANILLA.json' % arch) as json_file:
-        data = json.load(json_file)
+    elif ( flavour == "GAPPS"):
+        with open('waydroid_OTA/system/lineage/waydroid_%s/GAPPS.json' % arch) as json_file:
+            data = json.load(json_file)
+            for p in data['response']:
+                last=p
+                break
+            print(last["url"])
 
-        for p in data['response']:
-            last=p
-            break
-
-        print(last["url"])
+    elif ( flavour == "FOSS"):
+        with open('waydroid_OTA/system/lineage/waydroid_%s/FOSS.json' % arch) as json_file:
+            data = json.load(json_file)
+            for p in data['response']:
+                last=p
+                break
+            print(last["url"])
 
 elif (img == "vendor"):
 

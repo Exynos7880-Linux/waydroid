@@ -1,6 +1,18 @@
 #!/bin/bash
+
+if [[ $1 = "vanilla" ]]; then
+  FLAVOUR="VANILLA"
+elif [[ $1 = "gapps" ]]; then
+  FLAVOUR="GAPPS"
+elif [[ $1 = "foss" ]]; then
+  FLAVOUR="FOSS"
+else [[ $1 != "" ]];
+  echo "USAGE: waydroid.sh vanilla|gapps|foss"
+  exit 1
+fi
+
 ARCH="arm64"
-SYSTEM_DOWNLOAD_URL=`python3 getlatest.py system ${ARCH}`
+SYSTEM_DOWNLOAD_URL=`python3 getlatest.py system ${ARCH} ${FLAVOUR}`
 IMG_DIR=/usr/share/waydroid-extra/images/
 
 if [ ! -f /usr/bin/waydroid ] ; then
@@ -24,10 +36,22 @@ if [ ! -f "/usr/bin/unzip" ] ; then
 fi
 
 if [ ! -f "/usr/share/waydroid-extra/images/system.img" ] ; then
-  echo "Downloading Waydroid Images"
-  curl "${SYSTEM_DOWNLOAD_URL}" -o system.zip
-  unzip system.zip -d "${IMG_DIR}"
-  rm system.zip
+   if [[ $1 = "vanilla" ]]; then
+      echo "Downloading Waydroid ${FLAVOUR} Images"
+      curl "${SYSTEM_DOWNLOAD_URL}" -o system.zip
+      unzip system.zip -d "${IMG_DIR}"
+      
+   elif [[ $1 = "gapps" ]]; then
+      echo "Downloading Waydroid ${FLAVOUR} Images"
+      curl "${SYSTEM_DOWNLOAD_URL}" -o system.zip
+      unzip system.zip -d "${IMG_DIR}"
+      
+   elif [[ $1 = "foss" ]]; then
+      echo "Downloading Waydroid ${FLAVOUR} Images"
+      curl "${SYSTEM_DOWNLOAD_URL}" -o system.zip
+      unzip system.zip -d "${IMG_DIR}"
+   fi
+   rm system.zip
 fi
 
 if [ ! -f "/usr/share/waydroid-extra/images/vendor.img" ] ; then
