@@ -4,10 +4,8 @@ if [[ $1 = "vanilla" ]]; then
   FLAVOUR="VANILLA"
 elif [[ $1 = "gapps" ]]; then
   FLAVOUR="GAPPS"
-elif [[ $1 = "foss" ]]; then
-  FLAVOUR="FOSS"
 else [[ $1 != "" ]];
-  echo "USAGE: waydroid.sh vanilla|gapps|foss"
+  echo "USAGE: waydroid.sh vanilla|gapps"
   exit 1
 fi
 
