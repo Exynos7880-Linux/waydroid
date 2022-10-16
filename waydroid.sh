@@ -27,8 +27,8 @@ if [ ! -e "${IMG_DIR}" ] ; then
   mkdir -p "${IMG_DIR}"
 fi
 
-# check if unzip installed or not
-if [ ! -f "/usr/bin/unzip" ] ; then
+# check if wget installed or not
+if [ ! -f "/usr/bin/wget" ] ; then
   echo unzip missing, installing.
   pkcon install unzip wget -y
 fi
