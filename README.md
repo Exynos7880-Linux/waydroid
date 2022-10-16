@@ -3,5 +3,5 @@
 ## Usage
 
 ```
-./waydroid.sh vanilla|gapps|foss
+./waydroid.sh vanilla|gapps
 ```

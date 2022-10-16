@@ -30,12 +30,12 @@ fi
 # check if unzip installed or not
 if [ ! -f "/usr/bin/unzip" ] ; then
   echo unzip missing, installing.
-  pkcon install unzip -y
+  pkcon install unzip wget -y
 fi
 
 if [ ! -f "/usr/share/waydroid-extra/images/system.img" ] ; then
   echo "Downloading Waydroid ${FLAVOUR} Images"
-  curl "${SYSTEM_DOWNLOAD_URL}" -o system.zip
+  wget "${SYSTEM_DOWNLOAD_URL}" -O system.zip
   unzip system.zip -d "${IMG_DIR}"
   rm system.zip
 fi
