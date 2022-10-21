@@ -14,9 +14,6 @@ SYSTEM_DOWNLOAD_URL=`python3 getlatest.py system ${ARCH} ${FLAVOUR}`
 IMG_DIR=/usr/share/waydroid-extra/images/
 
 if [ ! -f /usr/bin/waydroid ] ; then
-  echo "Adding chum repo"
-  ssu ar sailfishos-chum https://repo.sailfishos.org/obs/sailfishos:/chum/4.4.0.72_aarch64/
-  ssu er sailfishos-chum
   echo "Installing Waydroid"
   pkcon refresh
   pkcon install -y waydroid waydroid-runner
