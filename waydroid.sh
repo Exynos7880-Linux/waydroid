@@ -44,9 +44,7 @@ if [ ! -f "/usr/share/waydroid-extra/images/vendor.img" ] ; then
 fi
 
 echo "running waydroid init"
-rm -rf /var/lib/waydroid /home/waydroid ~/waydroid /home/defaultuser/.share/waydroid /home/defaultuser/.local/share/applications/*aydroid* /home/defaultuser/.local/share/waydroid
-mkdir -p /home/waydroid
-ln -sf /home/waydroid /var/lib/waydroid
+rm -rf /var/lib/waydroid/* /home/waydroid/* ~/waydroid /home/defaultuser/.share/waydroid /home/defaultuser/.local/share/applications/*aydroid* /home/defaultuser/.local/share/waydroid
 waydroid init -f
 
 if [ ! -d /var/lib/waydroid/ ] ; then
