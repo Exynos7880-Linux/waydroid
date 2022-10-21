@@ -8,7 +8,7 @@ devel-su zypper in git
 ```
 2. clone the repo
 ```
-git clone https://github.com/Exynos7880-Linux/waydroid.git
+git clone https://github.com/Exynos7880-Linux/waydroid.git --recurse-submodules --depth 1
 ```
 3. cd waydroid
 ```
