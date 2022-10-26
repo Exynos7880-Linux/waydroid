@@ -16,5 +16,5 @@ cd waydroid
 ```
 4. install waydroid 
 ```
-./waydroid.sh vanilla|gapps
+devel-su ./waydroid.sh vanilla|gapps
 ```
