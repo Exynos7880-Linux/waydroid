@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Check that we run this as root
+whoami | grep -q root || { echo needs to run as root. quitting; exit; }
+
 if [[ $1 = "vanilla" ]]; then
   FLAVOUR="VANILLA"
 elif [[ $1 = "gapps" ]]; then
@@ -44,13 +47,24 @@ if [ ! -f "/usr/share/waydroid-extra/images/vendor.img" ] ; then
 fi
 
 echo "running waydroid init"
+# don't remove unless waydroid is already initialized 
+if waydroid status | grep -q "HALIUM_10"; then
 rm -rf /var/lib/waydroid/* /home/waydroid/* ~/waydroid /home/defaultuser/.share/waydroid /home/defaultuser/.local/share/applications/*aydroid* /home/defaultuser/.local/share/waydroid
+fi
 waydroid init -f
 
-if [ ! -d /var/lib/waydroid/ ] ; then
-  echo "exiting.."
-  exit
-else
-  echo "rebootig.."
-  reboot
+if waydroid status | grep -q "HALIUM_10"; then
+        read -r -p "Installation successfully, Do you want to Reboot now? [y/N] " response
+	case $response in
+        [yY][eE][sS]|[yY])  
+        	echo "rebootig.."
+ 		reboot
+ 		;;
+ 	*)
+ 		echo "Exiting.." 
+  		exit
+    esac
+else 
+	echo "Installation Failed !!"
+	exit;
 fi
