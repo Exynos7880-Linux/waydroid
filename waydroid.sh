@@ -63,7 +63,7 @@ if waydroid status | grep -q "HALIUM_10"; then
  	*)
  		echo "Exiting.." 
   		exit
-    esac
+	esac
 else 
 	echo "Installation Failed !!"
 	exit;
